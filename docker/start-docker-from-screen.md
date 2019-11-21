@@ -1,3 +1,8 @@
+# Docker em looping e não inicia
+
+- Pode acontecer de ficar em looping e não inicia
+- Processamento do docker está muito elevado
+
 The solution for us is to:
 
 Stop docker desktop completely
