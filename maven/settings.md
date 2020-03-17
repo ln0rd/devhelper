@@ -2,7 +2,7 @@ Talvez em algum momento {sujeito} precise definir um usuário e apontar para alg
 
 ```~/.m2/```
 
-e colocar o properties lá
+e colocar o `properties.xml lá
 
 exemplo de um properties
 
