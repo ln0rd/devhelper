@@ -3,7 +3,7 @@
 
 How configure aws-cli with mfa:
 
-first you need configure you aws-cli with command:
+first you need to configure your aws-cli with command:
 ```
 aws configure
 ```
@@ -56,6 +56,6 @@ aws configure set aws_session_token "$AWS_SESSION_TOKEN"
 ```
 
 
-After you did everuthing just you run the file with MFA code with argument like 
+After you did everything just you run the file with MFA code with argument like 
 
 `./filename.sh 121212` (just a example).
