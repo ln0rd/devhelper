@@ -2,7 +2,7 @@
 
 first you need to configure your aws-cli with command:
 
-`aws configure
+`aws configure`
 
 This command will to make a folder .aws in your home. Information you will need:
 ```
