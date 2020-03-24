@@ -60,7 +60,6 @@ in your `.aws` folder need contain two files, like example:
 
 config
 ```
-#[default]
 [profile mfa]
 region = us-east-1
 output = json
