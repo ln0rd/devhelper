@@ -33,7 +33,7 @@ if [ $# -ne 1 ]; then
   echo "   <MFA_TOKEN_CODE> = Code from virtual MFA device"
   exit 2
 fi
-ARN_OF_MFA=arn:aws:iam::026783351078:mfa/$USER
+ARN_OF_MFA=arn:aws:iam::{YOUR ID ARN IN AWS}:mfa/$USER
 MFA_TOKEN_CODE=$1
 DURATION=129600
 echo "MFA ARN: $ARN_OF_MFA"
@@ -56,6 +56,32 @@ aws configure set aws_session_token "$AWS_SESSION_TOKEN"
 ```
 
 
-After you did everything just you run the file with MFA code with argument like 
+in your `.aws` folder need contain two files, like example:
 
-`./filename.sh 121212` (just a example).
+config
+```
+#[default]
+[profile mfa]
+region = us-east-1
+output = json
+[default]
+region = us-east-1
+output = json
+```
+no credentials mantenha o profile e o default o mesmo 
+credentials
+```
+[default]
+aws_access_key_id = get in aws console
+aws_secret_access_key = get in aws console
+[profile mfa]
+aws_access_key_id = get in aws console
+aws_secret_access_key = get in aws console
+```
+
+para testar rode o comando `aws s3 ls` se retornar algum conteudo é pq esta funcionando
+
+após isso para autenticar o docker caso precise realize o comando 
+
+`aws ecr get-login`
+copie o resultado e execute ele sem o `-e none url...`
