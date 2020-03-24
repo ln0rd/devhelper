@@ -10,9 +10,9 @@ AWS Access Key ID [None]: (key)
 AWS Secret Access Key [None]: (key) 
 Default region name [None]: us-east-1 (example)
 Default output format [None]: (optional)
-
-Everything you can get in your aws console.After this step you can to create a file with this content and set the permission file: chmod +x yourfilename.sh
 ```
+Everything you can get in your aws console.After this step you can to create a file with this content and set the permission file: chmod +x yourfilename.sh
+
 Content
 ```
 #!/bin/bash
