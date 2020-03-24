@@ -2,7 +2,7 @@
 
 first you need to configure your aws-cli with command:
 
-aws configure
+`aws configure
 
 This command will to make a folder .aws in your home. Information you will need:
 ```
@@ -73,4 +73,4 @@ aws_secret_access_key = get in aws console
 
 Let's test it, run aws s3 ls command and if you get list content in return, its working! 
 
-after this step we just need to authentication in docker, run the command `aws ecr get-login` copy the result and execute it but without `-e none url...
+after this step we just need to authentication in docker, run the command `aws ecr get-login` copy the result and execute it but without `-e none url...`
