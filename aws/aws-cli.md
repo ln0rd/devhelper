@@ -74,3 +74,5 @@ aws_secret_access_key = get in aws console
 Let's test it, run `aws s3 ls` command and if you get list content in return, its working! 
 
 after this step we just need to authentication in docker, run the command `aws ecr get-login` copy the result and execute it but without `-e none url...`
+
+if you have any problem with command `aws ecr get-login` output try run `aws ecr get-login --no-include-email` and run the output. (=
