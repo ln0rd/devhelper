@@ -1,0 +1,93 @@
+version: 2
+build-image: &build-image
+  docker:
+    - image: ${DOCKER_REGISTRY}/build-docker:latest
+
+  working_directory: ~/your_project_name
+
+  steps:
+    - attach_workspace:
+        at: ~/your_project_name
+
+    - setup_remote_docker
+
+    - run:
+        name: Build and deploy preprocessor image
+        command: |
+          "command to deploy"
+
+    - run:
+        name: Build and deploy api image
+        command: |
+          "command to deploy"
+
+jobs:
+  build:
+    docker:
+      - image: ${DOCKER_REGISTRY}/build-java:8
+
+    working_directory: ~/project_folder
+
+    steps:
+      - checkout
+
+      - run:
+          name: Build and test
+          command: ./gradlew clean build
+
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  deploy_integration:
+    environment:
+      DEPLOY_ENVIRONMENT: integration
+    << : *build-image
+
+  deploy_sandbox:
+    environment:
+      DEPLOY_ENVIRONMENT: sandbox
+    << : *build-image
+
+  deploy_production:
+    environment:
+      DEPLOY_ENVIRONMENT: production
+    << : *build-image
+
+## workflow example
+workflows:
+  version: 2
+  your_project_name:
+    jobs:
+      - build:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
+      - deploy_integration:
+          context: org-global
+          requires:
+            - build
+          filters:
+            tags:
+              only: /integration-.*/
+            branches:
+              ignore: /.*/
+      - deploy_sandbox:
+          context: org-global
+          requires:
+            - build
+          filters:
+            tags:
+              only: /sandbox-.*/
+            branches:
+              ignore: /.*/
+      - deploy_production:
+          context: org-global
+          requires:
+            - build
+          filters:
+            tags:
+              only: /production-.*/
+            branches:
+              ignore: /.*/
