@@ -1,5 +1,11 @@
 ## file example
 
+Install:
+```
+sudo easy_install sshuttle==0.78.5
+```
+
+Usually script
 ```
 #!/usr/bin/expect
 proc get_ips { fqdn } {
